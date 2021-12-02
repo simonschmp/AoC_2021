@@ -4,8 +4,8 @@ INPUT_FILE = "02_day_input_1.txt"
 
 
 def get_position(values: List[str]) -> int:
-    horizontal_position = 0
-    depth_position = 0
+    horizontal_position: int = 0
+    depth_position: int = 0
 
     for value in values:
         number: int = int(''.join(filter(str.isdigit, value)))
