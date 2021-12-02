@@ -1,4 +1,4 @@
-INPUT_FILE = "01_day_input_1.txt" 
+INPUT_FILE = "01_day_input_1.txt"
 
 def count_increases(values):
     number_of_increases = 0
@@ -48,4 +48,3 @@ def test_count_sum_of_tripples():
 
     # assert
     assert result == expected_result
-
