@@ -1,6 +1,6 @@
 from typing import List
 
-INPUT_FILE = "03_day_input_1.txt"
+INPUT_FILE = "input_1.txt"
 
 
 def get_common_bit_of_index(values: List[str], index: int) -> str:

@@ -1,4 +1,5 @@
-INPUT_FILE = "01_day_input_1.txt"
+INPUT_FILE = "input_1.txt"
+
 
 def count_increases(values):
     number_of_increases = 0
@@ -32,7 +33,7 @@ def test_count_increases():
     expected_result = 7
 
     # act
-    result  = count_increases(test_values)
+    result = count_increases(test_values)
 
     # assert
     assert result == expected_result

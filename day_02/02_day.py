@@ -1,6 +1,6 @@
 from typing import List
 
-INPUT_FILE = "02_day_input_1.txt"
+INPUT_FILE = "input_1.txt"
 
 
 def get_position(values: List[str]) -> int:
