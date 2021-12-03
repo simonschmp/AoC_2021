@@ -33,37 +33,27 @@ def get_power_consumption(values: List[str]) -> int:
 
 
 def get_oxygen_generator_rating(values: List[str]) -> str:
-    solution_list: List[str] = values.copy()
-
     for index in range(len(values[0])):
-        common_bit: str = get_common_bit_of_index(solution_list, index)
+        common_bit: str = get_common_bit_of_index(values, index)
         if common_bit == "None":
             common_bit = "1"
-
-        solution_list = [x for x in solution_list if not x[index] != common_bit]
-
-        if len(solution_list) == 1:
+        values = [value for value in values if not value[index] != common_bit]
+        if len(values) == 1:
             break
-
-    return solution_list[0]
+    return values[0]
 
 
 def get_co2_scrubber_rating(values: List[str]) -> str:
-    solution_list: List[str] = values.copy()
-
     for index in range(len(values[0])):
-        common_bit: str = get_common_bit_of_index(solution_list, index)
+        common_bit: str = get_common_bit_of_index(values, index)
         if common_bit == "None" or common_bit == "1":
             common_bit = "0"
         else:
             common_bit = "1"
-
-        solution_list = [x for x in solution_list if not x[index] != common_bit]
-
-        if len(solution_list) == 1:
+        values = [value for value in values if not value[index] != common_bit]
+        if len(values) == 1:
             break
-
-    return solution_list[0]
+    return values[0]
 
 
 def get_life_support_rating(values: List[str]) -> int:
