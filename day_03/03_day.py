@@ -1,5 +1,4 @@
 from typing import List
-import pytest
 
 INPUT_FILE = "input_1.txt"
 
@@ -11,12 +10,10 @@ def get_common_bit_of_index(values: List[str], index: int) -> str:
             bit_count += 1
         else:
             bit_count -= 1
-    if bit_count > 0:
-        return "1"
-    elif bit_count < 0:
+    if bit_count < 0:
         return "0"
     else:
-        return "None"
+        return "1"
 
 
 def get_gamma_rate(values: List[str]) -> str:
@@ -35,22 +32,14 @@ def get_power_consumption(values: List[str]) -> int:
 def get_oxygen_generator_rating(values: List[str]) -> str:
     for index in range(len(values[0])):
         common_bit: str = get_common_bit_of_index(values, index)
-        if common_bit == "None":
-            common_bit = "1"
-        values = [value for value in values if not value[index] != common_bit]
-        if len(values) == 1:
-            break
+        values = [value for value in values if value[index] == common_bit]
     return values[0]
 
 
 def get_co2_scrubber_rating(values: List[str]) -> str:
     for index in range(len(values[0])):
         common_bit: str = get_common_bit_of_index(values, index)
-        if common_bit == "None" or common_bit == "1":
-            common_bit = "0"
-        else:
-            common_bit = "1"
-        values = [value for value in values if not value[index] != common_bit]
+        values = [value for value in values if not value[index] == common_bit]
         if len(values) == 1:
             break
     return values[0]
