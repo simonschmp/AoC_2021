@@ -33,6 +33,8 @@ def get_oxygen_generator_rating(values: List[str]) -> str:
     for index in range(len(values[0])):
         common_bit: str = get_common_bit_of_index(values, index)
         values = [value for value in values if value[index] == common_bit]
+        if len(values) == 1:
+            break
     return values[0]
 
 
