@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import List
 
 INPUT_FILE = "03_day_input_1.txt"
 
