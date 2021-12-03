@@ -1,17 +1,16 @@
 from typing import List
+import pytest
 
 INPUT_FILE = "input_1.txt"
 
 
 def get_common_bit_of_index(values: List[str], index: int) -> str:
     bit_count: int = 0
-
     for value in values:
         if value[index] == "1":
             bit_count += 1
         else:
             bit_count -= 1
-
     if bit_count > 0:
         return "1"
     elif bit_count < 0:
@@ -35,40 +34,34 @@ def get_power_consumption(values: List[str]) -> int:
 
 def get_oxygen_generator_rating(values: List[str]) -> str:
     solution_list: List[str] = values.copy()
-    in_between_list: List[str] = values.copy()
 
     for index in range(len(values[0])):
         common_bit: str = get_common_bit_of_index(solution_list, index)
         if common_bit == "None":
             common_bit = "1"
-        for value in in_between_list:
-            if value[index] != common_bit:
-                solution_list.remove(value)
+
+        solution_list = [x for x in solution_list if not x[index] != common_bit]
+
         if len(solution_list) == 1:
             break
-        in_between_list = solution_list.copy()
 
     return solution_list[0]
 
 
 def get_co2_scrubber_rating(values: List[str]) -> str:
     solution_list: List[str] = values.copy()
-    in_between_list: List[str] = values.copy()
 
     for index in range(len(values[0])):
         common_bit: str = get_common_bit_of_index(solution_list, index)
-        if common_bit == "None":
-            common_bit = "0"
-        elif common_bit == "1":
+        if common_bit == "None" or common_bit == "1":
             common_bit = "0"
         else:
             common_bit = "1"
-        for value in in_between_list:
-            if value[index] != common_bit:
-                solution_list.remove(value)
+
+        solution_list = [x for x in solution_list if not x[index] != common_bit]
+
         if len(solution_list) == 1:
             break
-        in_between_list = solution_list.copy()
 
     return solution_list[0]
 
