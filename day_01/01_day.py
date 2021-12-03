@@ -11,18 +11,18 @@ def count_increases(values):
     return number_of_increases
 
 
-def count_sum_of_tripples(values):
-    commulated_data = []
+def count_sum_of_triples(values):
+    cumulated_data = []
     for idx in range(len(values)-2):
-        commulated_number = values[idx] + values[idx+1] + values[idx+2]
-        commulated_data.append(commulated_number)
-    return count_increases(commulated_data)
+        cumulated_number = values[idx] + values[idx+1] + values[idx+2]
+        cumulated_data.append(cumulated_number)
+    return count_increases(cumulated_data)
 
 
 with open(INPUT_FILE) as f:
     input_data = [int(value) for value in f.read().splitlines()]
     print(count_increases(input_data))
-    print(count_sum_of_tripples(input_data))
+    print(count_sum_of_triples(input_data))
 
 
 ####### Tests #################################################################
@@ -39,13 +39,13 @@ def test_count_increases():
     assert result == expected_result
 
 
-def test_count_sum_of_tripples():
+def test_count_sum_of_triples():
     # arrange
     test_values = [199, 200, 208, 210, 200, 207, 240, 269, 260, 263]
     expected_result = 5
 
     # act
-    result = count_sum_of_tripples(test_values)
+    result = count_sum_of_triples(test_values)
 
     # assert
     assert result == expected_result
