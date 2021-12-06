@@ -1,4 +1,3 @@
-from typing import List
 from copy import deepcopy
 
 INPUT_FILE = "input_1.txt"
@@ -62,8 +61,6 @@ def calculate_part_one(draw_order, fields_1):
     copy_fields = deepcopy(fields_1)
     fields = deepcopy(fields_1)
     winning_field = determine_fastest_win(draw_order, fields)
-    print(copy_fields[winning_field])
-    print(fields[winning_field])
     return calculate_final_result(draw_order, copy_fields[winning_field])
 
 
@@ -71,8 +68,6 @@ def calculate_part_two(draw_order, fields_1):
     copy_fields = deepcopy(fields_1)
     fields = deepcopy(fields_1)
     winning_field = determine_slowest_win(draw_order, fields)
-    print(copy_fields[winning_field])
-    print(fields[winning_field])
     return calculate_final_result(draw_order, copy_fields[winning_field])
 
 

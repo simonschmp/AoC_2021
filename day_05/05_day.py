@@ -1,5 +1,3 @@
-from typing import List
-
 INPUT_FILE = "input_1.txt"
 
 
