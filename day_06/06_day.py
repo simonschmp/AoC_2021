@@ -3,33 +3,24 @@ from typing import List
 INPUT_FILE = "input_1.txt"
 
 
-def get_fish_list(fishes):
-    fishes_cumulated = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+def get_fish_groups(fishes: List[int]) -> List[int]:
+    fishes_cumulated: List[int] = [0, 0, 0, 0, 0, 0, 0, 0, 0]
     for fish in fishes:
         fishes_cumulated[fish] += 1
     return fishes_cumulated
 
 
-def calculate_number_of_fishes(fishes, days):
-    fishes_list = get_fish_list(fishes)
+def calculate_number_of_fishes(fishes: List[int], days: int) -> int:
+    fish_groups: List[int] = get_fish_groups(fishes)
     for _ in range(days):
-        fake_list = []
-        fake_list.append(fishes_list[1])
-        fake_list.append(fishes_list[2])
-        fake_list.append(fishes_list[3])
-        fake_list.append(fishes_list[4])
-        fake_list.append(fishes_list[5])
-        fake_list.append(fishes_list[6])
-        fake_list.append(fishes_list[7]+fishes_list[0])
-        fake_list.append(fishes_list[8])
-        fake_list.append(fishes_list[0])
-        fishes_list = fake_list
-    return sum(fishes_list)
+        fish_groups = fish_groups[1:] + fish_groups[:1]
+        fish_groups[6] += fish_groups[8]
+    return sum(fish_groups)
 
 
 with open(INPUT_FILE) as f:
-    input_data = f.readline()
-    fish_list = list(map(int, input_data.split(',')))
+    input_data: str = f.readline()
+    fish_list: List[int] = list(map(int, input_data.split(',')))
     print(f"part one: {calculate_number_of_fishes(fish_list, 80)}")
     print(f"part two: {calculate_number_of_fishes(fish_list, 256)}")
 
