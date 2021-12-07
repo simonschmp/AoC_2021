@@ -17,6 +17,7 @@ def calculate_best_position_part_one(crap_positions: List[int]) -> int:
 
 def get_fuel(position, index):
     diff: int = abs(position-index)
+    # Triangular Number Calculation
     return diff*(diff+1)/2
 
 
