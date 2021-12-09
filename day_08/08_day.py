@@ -23,12 +23,12 @@ def calculate_part_one(input_data: List[str]) -> int:
     return counter
 
 
-def get_decoded_numbers(line):
+def get_decoded_numbers(line) -> Dict[str, List[str]]:
     letter_dict: Dict[str, List[str]] = {}
     inputs: List[str] = get_inputs(line)
     inp: str
     for inp in inputs:
-        sorted_inp: str = sorted(inp)
+        sorted_inp: List[str] = sorted(inp)
         if len(inp) == 2:
             letter_dict["1"] = sorted_inp
         if len(inp) == 3:
@@ -41,13 +41,13 @@ def get_decoded_numbers(line):
     # figure out 6
     for inp in inputs:
         if len(inp) == 6:
-            sorted_inp: str = sorted(inp)
+            sorted_inp = sorted(inp)
             if not set(letter_dict["1"]).issubset(sorted_inp):
                 letter_dict["6"] = sorted_inp
 
     # figure out 0,9,2,3,5
     for inp in inputs:
-        sorted_inp: str = sorted(inp)
+        sorted_inp = sorted(inp)
         if len(inp) == 6:
             if set(letter_dict["4"]).issubset(sorted_inp):
                 letter_dict["9"] = sorted_inp
