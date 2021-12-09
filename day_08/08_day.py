@@ -68,8 +68,9 @@ def decode_line(letter_dict: Dict[str, List[str]], line: str) -> int:
     number: str = ''
     output: str
     for output in outputs:
+        sorted_output: List[str] = sorted(output)
         for key in letter_dict:
-            if sorted(output) == letter_dict[key]:
+            if sorted_output == letter_dict[key]:
                 number += key
     return int(number)
 
