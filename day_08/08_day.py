@@ -28,41 +28,45 @@ def get_decoded_numbers(line):
     inputs: List[str] = get_inputs(line)
     inp: str
     for inp in inputs:
+        sorted_inp: str = sorted(inp)
         if len(inp) == 2:
-            letter_dict["1"] = sorted(inp)
+            letter_dict["1"] = sorted_inp
         if len(inp) == 3:
-            letter_dict["7"] = sorted(inp)
+            letter_dict["7"] = sorted_inp
         if len(inp) == 4:
-            letter_dict["4"] = sorted(inp)
+            letter_dict["4"] = sorted_inp
         if len(inp) == 7:
-            letter_dict["8"] = sorted(inp)
+            letter_dict["8"] = sorted_inp
 
     # figure out 6
     for inp in inputs:
         if len(inp) == 6:
-            if not set(letter_dict["1"]).issubset(sorted(inp)):
-                letter_dict["6"] = sorted(inp)
+            sorted_inp: str = sorted(inp)
+            if not set(letter_dict["1"]).issubset(sorted_inp):
+                letter_dict["6"] = sorted_inp
 
     # figure out 0,9,2,3,5
     for inp in inputs:
+        sorted_inp: str = sorted(inp)
         if len(inp) == 6:
-            if set(letter_dict["4"]).issubset(sorted(inp)):
-                letter_dict["9"] = sorted(inp)
-            elif letter_dict["6"] != sorted(inp):
-                letter_dict["0"] = sorted(inp)
+            if set(letter_dict["4"]).issubset(sorted_inp):
+                letter_dict["9"] = sorted_inp
+            elif letter_dict["6"] != sorted_inp:
+                letter_dict["0"] = sorted_inp
         if len(inp) == 5:
-            if set(letter_dict["1"]).issubset(sorted(inp)):
-                letter_dict["3"] = sorted(inp)
-            elif set(sorted(inp)).issubset(letter_dict["6"]):
-                letter_dict["5"] = sorted(inp)
+            if set(letter_dict["1"]).issubset(sorted_inp):
+                letter_dict["3"] = sorted_inp
+            elif set(sorted_inp).issubset(letter_dict["6"]):
+                letter_dict["5"] = sorted_inp
             else:
-                letter_dict["2"] = sorted(inp)
+                letter_dict["2"] = sorted_inp
     return letter_dict
 
 
 def decode_line(letter_dict: Dict[str, List[str]], line: str) -> int:
     outputs: List[str] = get_outputs(line)
     number: str = ''
+    output: str
     for output in outputs:
         for key in letter_dict:
             if sorted(output) == letter_dict[key]:
