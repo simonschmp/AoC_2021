@@ -13,7 +13,7 @@ def read_in_field(input_field: str) -> List[List[int]]:
     return field
 
 
-def get_low_points(field: List[List[int]], shadow_field: List[List[int]]) -> List[List[int]]:
+def get_low_points(field: List[List[int]]) -> List[List[int]]:
     min_numbers: List[List[int]] = []
     smallest: bool = True
     for row in range(len(field)):
@@ -32,14 +32,12 @@ def get_low_points(field: List[List[int]], shadow_field: List[List[int]]) -> Lis
                     smallest = False
             if smallest:
                 min_numbers.append([row, col])
-                shadow_field[row][col] = 9
             smallest = True
     return min_numbers
 
 
 def calculate_part_one(field: List[List[int]]) -> int:
-    shadow_field: List[List[int]] = deepcopy(field)
-    min_numbers_points: List[List[int]] = get_low_points(field, shadow_field)
+    min_numbers_points: List[List[int]] = get_low_points(field)
     points: int = 0
     for row_col in min_numbers_points:
         points += (field[row_col[0]][row_col[1]] + 1)
@@ -71,9 +69,10 @@ def get_next_points(field: List[List[int]], position: List[int], shadow_field: L
 
 def calculate_part_two(field: List[List[int]]):
     shadow_field: List[List[int]] = deepcopy(field)
-    low_points: List[List[int]] = get_low_points(field, shadow_field)
+    low_points: List[List[int]] = get_low_points(field)
     value_list: List[int] = []
     for low_point in low_points:
+        shadow_field[low_point[0]][low_point[1]] = 9
         count: int = 0
         list_to_check: List[List[int]] = []
         list_to_check.append(low_point)
